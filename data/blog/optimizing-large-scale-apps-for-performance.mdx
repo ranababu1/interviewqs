@@ -15,6 +15,6 @@ I also audit the state management system to ensure we’re not overusing context
 
 Prioritization depends on impact versus effort. I’ll focus on low-hanging fruits like bundle size reduction first, then address more complex issues such as optimizing API call patterns or heavy computations.
 
-### Follow-up: Can you provide an example of a time when you significantly improved performance in a production app? What tools and techniques did you use, and how did you measure success?
+### Can you provide an example of a time when you significantly improved performance in a production app? What tools and techniques did you use and how did you measure success?
 
 In one of my previous projects, the app’s time-to-interactive was excessively long due to a large number of third-party libraries. I reduced the bundle size by dynamically importing libraries only when necessary, eliminating unused imports, and using a CDN for heavy assets. I also replaced synchronous API calls with an async batching mechanism. The time-to-interactive improved by 40%.
