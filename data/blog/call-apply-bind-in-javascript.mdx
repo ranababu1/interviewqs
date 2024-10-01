@@ -1,0 +1,76 @@
+---
+title: Difference Between call, apply, and bind Methods
+date: '2024-10-04'
+tags: ['JavaScript', 'Functions']
+draft: false
+summary: Learn how to use `call`, `apply` and `bind` methods in JavaScript.
+images: []
+---
+
+## Q: Explain the difference between `call`, `apply`, and `bind` methods.
+
+In JavaScript, `call`, `apply`, and `bind` are methods available on function objects. They allow you to control the execution context (the `this` value) of a function. Let's explore each method and their differences:
+
+## The `call` Method
+
+The `call` method invokes a function with a specified `this` value and individual arguments.
+
+```javascript
+function greet(greeting) {
+  console.log(`${greeting}, ${this.name}!`)
+}
+
+const person = { name: 'Alice' }
+
+greet.call(person, 'Hello') // Output: Hello, Alice!
+```
+
+## The `apply` Method
+
+The `apply` method is similar to `call`, but it accepts arguments as an array.
+
+```javascript
+function introduce(greeting, profession) {
+  console.log(`${greeting}, I'm ${this.name} and I'm a ${profession}.`)
+}
+
+const person = { name: 'Bob' }
+
+introduce.apply(person, ['Hi', 'developer'])
+// Output: Hi, I'm Bob and I'm a developer.
+```
+
+## The `bind` Method
+
+Unlike `call` and `apply`, `bind` doesn't immediately invoke the function. Instead, it returns a new function with a fixed `this` value.
+
+```javascript
+function sayHello() {
+  console.log(`Hello, ${this.name}!`)
+}
+
+const person = { name: 'Charlie' }
+
+const boundHello = sayHello.bind(person)
+boundHello() // Output: Hello, Charlie!
+```
+
+## Key Differences
+
+1. **Invocation:**
+
+   - `call` and `apply` invoke the function immediately.
+   - `bind` returns a new function without invoking it.
+
+2. **Argument passing:**
+
+   - `call` accepts arguments individually.
+   - `apply` accepts arguments as an array.
+   - `bind` can accept some or all arguments when creating the bound function.
+
+3. **Use cases:**
+   - Use `call` when you know the number of arguments.
+   - Use `apply` when arguments are in an array or you don't know their number in advance.
+   - Use `bind` when you want to fix the `this` value but invoke the function later.
+
+Understanding these methods helps in writing more flexible and reusable code, especially when working with callbacks, event handlers, or when you need to borrow methods from other objects.

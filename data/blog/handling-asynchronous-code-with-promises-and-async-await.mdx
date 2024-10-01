@@ -1,0 +1,58 @@
+---
+title: Handling Asynchronous Code with Promises and async/await
+date: '2024-10-06'
+tags: ['JavaScript']
+draft: false
+summary: Learn how JavaScript handles asynchronous operations using Promises and `async/await`.
+images: []
+---
+
+## Q: How does JavaScript handle asynchronous code? Explain Promises and `async/await`.
+
+**Answer:**
+
+JavaScript uses the event loop to handle asynchronous code via callbacks, Promises, and `async/await`.
+
+**Promises:**
+
+- Represents a value that may be available now, later, or never.
+- Has states: **pending**, **fulfilled**, **rejected**.
+
+**Example:**
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  // Asynchronous operation
+  resolve('Success')
+})
+
+promise
+  .then((result) => {
+    console.log(result)
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+```
+
+`async/await:`
+
+- Syntactic sugar over Promises.
+- `async` functions return a Promise.
+- `await` pauses execution until the Promise resolves.
+
+**Example:**
+
+```javascript
+async function fetchData() {
+  try {
+    const response = await fetch('api/data')
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+fetchData()
+```
