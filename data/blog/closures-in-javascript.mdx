@@ -1,0 +1,46 @@
+---
+title: Explain the Concept of Closures in JavaScript with Examples
+date: '2024-10-01'
+tags: ['JavaScript']
+draft: false
+summary: Understand closures in JavaScript and their practical use cases with examples.
+images: []
+---
+
+## Q: Explain the concept of closures in JavaScript. Provide an example where closures are useful.
+
+A **closure** in JavaScript is a function that has access to its own scope, the outer function's scope, and the global scope. This allows the function to access variables from an outer function even after the outer function has returned.
+
+**How Closures Work:**
+
+When a function is created, it retains a reference to its lexical environment. If the function is returned or passed elsewhere, it still retains access to the variables in its outer scope.
+
+**Example where Closures are Useful:**
+
+```javascript
+function makeCounter() {
+  let count = 0
+
+  return function () {
+    count += 1
+    return count
+  }
+}
+
+const counter = makeCounter()
+
+console.log(counter()) // Outputs: 1
+console.log(counter()) // Outputs: 2
+```
+
+**In this example:**
+
+- `makeCounter` initializes a local variable count.
+- It returns an inner function that increments and returns count.
+- The inner function forms a closure, retaining access to count even after makeCounter has executed.
+
+**Use Cases:**
+
+- Data Privacy: Emulate private variables.
+- Event Handlers: Retain access to outer scope variables.
+- Partial Applications: Create functions with pre-set parameters.
